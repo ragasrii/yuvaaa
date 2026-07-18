@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Countdown For Yuvaa 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffd6e8,#fff2cc,#d6f5ff,#efe1ff);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+section{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    transition:1s;
+}
+
+#page2{
+    display:none;
+}
+
+.glass{
+    width:420px;
+    max-width:90%;
+    padding:40px;
+    border-radius:25px;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    text-align:center;
+}
+
+.glass h1{
+    margin:20px 0;
+    font-size:42px;
+    color:#ff4f87;
+    font-family:'Great Vibes',cursive;
+}
+
+.glass h3{
+    color:#7a5cff;
+}
+
+.question{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:600;
+}
+
+.buttons{
+    margin-top:35px;
+}
+
+button{
+    padding:14px 34px;
+    margin:12px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
+
+#yesBtn,
+#openBtn{
+    background:#ff6fa6;
+    color:white;
+}
+
+#yesBtn:hover,
+#openBtn:hover{
+    transform:scale(1.08);
+}
+
+#noBtn,
+#stillNo{
+    background:white;
+    color:#444;
+}
+
+#popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+}
+
+.popup-box{
+    width:420px;
+    max-width:90%;
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    text-align:center;
+    animation:popup .4s;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.popup-box h2{
+    color:#ff4f87;
+}
+
+.popup-box h3{
+    margin:15px 0;
+    color:#444;
+}
+
+.popup-box span{
+    color:#ff2f70;
+}
+
+.popupButtons{
+    margin-top:25px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin:35px 0;
+}
+
+.box{
+    width:90px;
+    height:100px;
+    border-radius:20px;
+    background:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.box h2{
+    color:#ff4f87;
+    font-size:34px;
+}
+
+.box span{
+    font-size:14px;
+    color:#666;
+}
+
+.message{
+    font-size:16px;
+    color:#555;
+}
+
+#birthdayMessage{
+    margin-top:25px;
+    color:#ff2d75;
+    font-family:'Great Vibes',cursive;
+    font-size:46px;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    opacity:.25;
+}
+
+.c1{
+    width:220px;
+    height:220px;
+    background:#ff8cc6;
+    left:-60px;
+    top:-50px;
+}
+
+.c2{
+    width:180px;
+    height:180px;
+    background:#9ddcff;
+    right:-50px;
+    top:80px;
+}
+
+.c3{
+    width:260px;
+    height:260px;
+    background:#fff0aa;
+    bottom:-120px;
+    left:20%;
+}
+
+.c4{
+    width:180px;
+    height:180px;
+    background:#d9b8ff;
+    bottom:40px;
+    right:-60px;
+}
+
+.sparkle{
+    position:absolute;
+    font-size:24px;
+    animation:twinkle 3s infinite;
+}
+
+.s1{
+    left:12%;
+    top:18%;
+}
+
+.s2{
+    right:15%;
+    top:30%;
+}
+
+.s3{
+    left:65%;
+    bottom:20%;
+}
+
+@keyframes twinkle{
+    50%{
+        opacity:.3;
+        transform:scale(1.4);
+    }
+}
+
+.balloon{
+    position:absolute;
+    width:55px;
+    height:70px;
+    border-radius:50%;
+    animation:floatUp 12s linear infinite;
+}
+
+.b1{
+    background:#ff8fc0;
+    left:10%;
+    bottom:-120px;
+}
+
+.b2{
+    background:#8ddcff;
+    left:35%;
+    bottom:-200px;
+    animation-delay:2s;
+}
+
+.b3{
+    background:#ffe58d;
+    left:65%;
+    bottom:-150px;
+    animation-delay:5s;
+}
+
+.b4{
+    background:#d6b3ff;
+    left:85%;
+    bottom:-220px;
+    animation-delay:7s;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-130vh);
+    }
+}
+
+@media(max-width:600px){
+
+.glass{
+    width:92%;
+    padding:25px;
+}
+
+.glass h1{
+    font-size:34px;
+}
+
+.box{
+    width:72px;
+    height:82px;
+}
+
+.box h2{
+    font-size:28px;
+}
+
+button{
+    width:90%;
+    margin:8px auto;
+    display:block;
+}
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Background -->
+<div class="background">
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+    <div class="circle c4"></div>
+
+    <span class="sparkle s1">✨</span>
+    <span class="sparkle s2">✨</span>
+    <span class="sparkle s3">✨</span>
+
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+</div>
+
+<!-- ==========================
+PAGE 1
+========================== -->
+
+<section id="page1">
+
+<div class="glass">
+
+<h3>💖 A Special Surprise 💖</h3>
+
+<h1>Hey Yuvaa 🌸</h1>
+
+<p>
+I have something special waiting for you...
+</p>
+
+<p class="question">
+Would you like to open it?
+</p>
+
+<div class="buttons">
+
+<button id="yesBtn">
+YES 💗
+</button>
+
+<button id="noBtn">
+NO 🤍
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================
+POPUP
+========================== -->
+
+<div id="popup">
+
+<div class="popup-box">
+
+<h2>🥺 Oh nooooo!!</h2>
+
+<h3>Your girl <span>Raga</span> is cryingggg... 😭💔</h3>
+
+<p>
+Don't break her heart! 💖✨
+</p>
+
+<p>
+Will you please open it?
+</p>
+
+<div class="popupButtons">
+
+<button id="openBtn">
+Okay, I'll Open It 💖
+</button>
+
+<button id="stillNo">
+Still No 🤭
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================
+PAGE 2
+========================== -->
+
+<section id="page2">
+
+<div class="glass countdown-card">
+
+<h4>🎉 Countdown To 🎉</h4>
+
+<h1>Yuvaa's Birthday 🌸</h1>
+
+<div class="countdown">
+
+<div class="box">
+<h2 id="days">00</h2>
+<span>Days</span>
+</div>
+
+<div class="box">
+<h2 id="hours">00</h2>
+<span>Hours</span>
+</div>
+
+<div class="box">
+<h2 id="minutes">00</h2>
+<span>Minutes</span>
+</div>
+
+<div class="box">
+<h2 id="seconds">00</h2>
+<span>Seconds</span>
+</div>
+
+</div>
+
+<p class="message">
+Every second brings us closer to your special day. 💖
+</p>
+
+<h2 id="birthdayMessage"></h2>
+
+</div>
+
+</section>
+
+<!-- Confetti -->
+<div id="confetti"></div>
+
+<!-- Fireworks -->
+<div id="fireworks"></div>
+
+<script>
+// ---------- ELEMENTS ----------
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+const popup = document.getElementById("popup");
+const openBtn = document.getElementById("openBtn");
+const stillNo = document.getElementById("stillNo");
+
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
+const birthdayMessage = document.getElementById("birthdayMessage");
+
+// ---------- PAGE CHANGE ----------
+yesBtn.onclick = () => {
+    page1.style.display = "none";
+    page2.style.display = "flex";
+};
+
+openBtn.onclick = () => {
+    popup.style.display = "none";
+    page1.style.display = "none";
+    page2.style.display = "flex";
+};
+
+noBtn.onclick = () => {
+    popup.style.display = "flex";
+};
+
+// ---------- MOVING STILL NO BUTTON ----------
+let messages = [
+    "🥺 Raga is crying even more...",
+    "💔 Please don't say no...",
+    "🌸 Just one click...",
+    "😭 Pleaseeee Yuvaa...",
+    "💖 Click 'Okay, I'll Open It!'"
+];
+
+let i = 0;
+
+stillNo.addEventListener("mouseover", moveButton);
+stillNo.addEventListener("click", moveButton);
+
+function moveButton() {
+
+    let x = Math.random() * 220 - 110;
+    let y = Math.random() * 140 - 70;
+
+    stillNo.style.position = "relative";
+    stillNo.style.left = x + "px";
+    stillNo.style.top = y + "px";
+
+    const p = popup.querySelectorAll("p");
+
+    if (i < messages.length) {
+        p[0].innerHTML = messages[i];
+        i++;
+    } else {
+        i = 0;
+    }
+}
+
+// ---------- COUNTDOWN ----------
+const birthday = new Date("December 25, 2026 00:00:00").getTime();
+
+const timer = setInterval(() => {
+
+    const now = new Date().getTime();
+
+    const distance = birthday - now;
+
+    if (distance <= 0) {
+
+        clearInterval(timer);
+
+        document.querySelector(".countdown").style.display = "none";
+
+        birthdayMessage.innerHTML =
+        "🎉 HAPPY BIRTHDAY YUVAA! 🎂<br><br>May all your dreams come true! 💖✨";
+
+        launchConfetti();
+
+        launchFireworks();
+
+        return;
+    }
+
+    days.innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    hours.innerHTML = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
+    minutes.innerHTML = Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
+
+    seconds.innerHTML = Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+    );
+
+}, 1000);
+
+// ---------- CONFETTI ----------
+function launchConfetti(){
+
+    const area = document.getElementById("confetti");
+
+    for(let i=0;i<180;i++){
+
+        let piece=document.createElement("div");
+
+        piece.style.position="fixed";
+        piece.style.left=Math.random()*100+"vw";
+        piece.style.top="-20px";
+
+        piece.style.width="10px";
+        piece.style.height="10px";
+
+        piece.style.background=
+        `hsl(${Math.random()*360},90%,70%)`;
+
+        piece.style.borderRadius="50%";
+
+        piece.style.animation=
+        `fall ${3+Math.random()*3}s linear forwards`;
+
+        area.appendChild(piece);
+
+        setTimeout(()=>{
+            piece.remove();
+        },7000);
+
+    }
+
+}
+
+// ---------- FIREWORKS ----------
+function launchFireworks(){
+
+    const area=document.getElementById("fireworks");
+
+    setInterval(()=>{
+
+        let star=document.createElement("div");
+
+        star.innerHTML="✨";
+
+        star.style.position="fixed";
+        star.style.left=Math.random()*100+"vw";
+        star.style.top=Math.random()*70+"vh";
+
+        star.style.fontSize=(25+Math.random()*35)+"px";
+
+        star.style.animation="explode 1s ease";
+
+        area.appendChild(star);
+
+        setTimeout(()=>{
+            star.remove();
+        },1000);
+
+    },400);
+
+}
+
+// ---------- EXTRA ANIMATIONS ----------
+const style=document.createElement("style");
+
+style.innerHTML=`
+
+@keyframes fall{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(120vh) rotate(720deg);
+opacity:0;
+}
+
+}
+
+@keyframes explode{
+
+0%{
+transform:scale(.2);
+opacity:0;
+}
+
+50%{
+transform:scale(1.6);
+opacity:1;
+}
+
+100%{
+transform:scale(2.3);
+opacity:0;
+}
+
+}
+`;
+
+document.head.appendChild(style);
+
+</script>
+
+</body>
+</html>
